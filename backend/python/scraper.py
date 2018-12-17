@@ -44,7 +44,7 @@ def log_error(e):
 
 def extract_table(url):
 
-    retval = {}
+    retval = []
 
     raw_html = simple_get(url)
     html = BeautifulSoup(raw_html, 'html.parser')
@@ -66,31 +66,36 @@ def extract_table(url):
 
         entry_f = []
         for a in entry:
-        	entry_f += a
+            entry_f += a
 
-        retval[entry[0][0]] = np.array(entry_f[1:]).flatten()
+        retval.append(np.array(entry_f).flatten())
 
-    return retval
+    return np.array(retval)
 
-teams = extract_table('https://www.formula1.com/en/results.html/2018/team.html')
-drivers = extract_table('https://www.formula1.com/en/results.html/2018/drivers.html')
 
-races = extract_table('https://www.formula1.com/en/results.html/2018/races.html')
+"""
+
+t_teams = extract_table('https://www.formula1.com/en/results.html/2018/team.html')
+t_drivers = extract_table('https://www.formula1.com/en/results.html/2018/drivers.html')
+t_races = extract_table('https://www.formula1.com/en/results.html/2018/races.html')
 # omit unnecessary information
-for i in races:
-	races[i] = races[i][0]
+for i in range(len(t_races)):
+	t_races[i] = t_races[i][:2]
+
 
 print("\nTEAMS:")
 
-for i in teams:
-	print(str(i) + " " + str(teams[i]))
+for i in t_teams:
+	print(i)
 
 print("\nDRIVERS:")
 
-for i in drivers:
-	print(str(i) + " " + str(drivers[i]))
+for i in t_drivers:
+	print(i)
 
 print("\nGRAND PRIXES:")
 
-for i in races:
-	print(str(i) + " " + str(races[i]))
+for i in t_races:
+	print(i)
+
+"""
