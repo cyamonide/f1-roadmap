@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import numpy as np
 import scraper
 import sql_management
