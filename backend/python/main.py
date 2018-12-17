@@ -44,8 +44,7 @@ mycursor = mydb.cursor(buffered=True)
 
 # Table headers for grand prixes
 grand_prixes_table_headers = {
-    "country": "VARCHAR(3)",
-    "city": "VARCHAR(255)",
+    "country": "VARCHAR(255)",
     "weekend": "DATE",
     "event_id": "INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY"
 }
@@ -64,7 +63,7 @@ driver_standings_table_headers = {
 # Table headers for driver stats
 driver_stats_table_headers = {
     "event_id": "INT UNSIGNED",
-    "event_city": "VARCHAR(255)",
+    "event_country": "VARCHAR(255)",
     "driver_id": "INT UNSIGNED",
     "first_name": "VARCHAR(255)",
     "last_name": "VARCHAR(255)",
@@ -85,7 +84,7 @@ constructor_standings_table_headers = {
 # Table headers for constructor stats
 constructor_stats_table_headers = {
     "event_id": "INT UNSIGNED",
-    "event_city": "VARCHAR(255)",
+    "event_country": "VARCHAR(255)",
     "team_id": "INT UNSIGNED",
     "team_name": "VARCHAR(255)",
     "car": "VARCHAR(255)",
@@ -105,3 +104,4 @@ tables = {
 # Initialize all tables
 for table_name in tables:
     create_table(table_name, tables[table_name])
+
