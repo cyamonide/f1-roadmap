@@ -33,7 +33,7 @@ def create_table(table_name, table_headers):
         return False
 
 
-def initialize_tables(tables, flush=True):
+def initialize_tables(tables, flush=False):
     """Initializes all tables based on table headers in 
     provided tables.
 
@@ -48,7 +48,10 @@ def initialize_tables(tables, flush=True):
     # Initialize all tables
     for table_name in tables:
         if flush:
-            mycursor.execute("drop table " + table_name)
+            try:
+                mycursor.execute("drop table " + table_name)
+            except mysql.connector.errors.ProgrammingError:
+                pass
         create_table(table_name, tables[table_name])
 
 
@@ -66,7 +69,7 @@ def add_table_entry(table_name, values):
     """
 
     try:
-        headers = f1_2018_tables[table_name]
+        headers = f1_tables[table_name]
     except KeyError:
         print(table_name + " is not a valid table in database f1_2018.")
         print("\t Unable to add entry.")
@@ -122,13 +125,13 @@ mydb = mysql.connector.connect(
     host="localhost",
     user="danny",
     password="welldonebaku",
-    database="f1_2018")
+    database="f1")
 
 # Initialize cursor
 mycursor = mydb.cursor(buffered=True)
 
 # Table headers for grand prixes
-grand_prixes_table_headers = {
+table_headers_2018_stats = {
     "country": "VARCHAR(255)",
     "weekend": "DATE",
     "position": "INT UNSIGNED",
@@ -142,54 +145,25 @@ grand_prixes_table_headers = {
     "points": "INT UNSIGNED"
 }
 
-# Table headers for driver standings
-driver_standings_table_headers = {
-    "driver_id": "INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY",
+table_headers_2018_driver_standings = {
     "position": "INT UNSIGNED",
-    "first_name": "VARCHAR(255)",
-    "last_name": "VARCHAR(255)",
-    "nationality": "CHAR(3)",
+    "driver_number": "INT UNSIGNED",
+    "driver_first_name": "VARCHAR(255)",
+    "driver_last_name": "VARCHAR(255)",
+    "driver_handle": "CHAR(3)",
+    "home_country": "CHAR(3)",
     "car": "VARCHAR(255)",
     "points": "INT UNSIGNED"
 }
 
-# Table headers for driver stats
-driver_stats_table_headers = {
-    "event_country": "VARCHAR(255)",
-    "driver_id": "INT UNSIGNED",
-    "first_name": "VARCHAR(255)",
-    "last_name": "VARCHAR(255)",
+table_headers_2018_constructor_standings = {
+    "position": "INT UNSIGNED",
     "car": "VARCHAR(255)",
-    "position": "INT UNSIGNED",
-    "points": "INT UNSIGNED",
-}
-
-# Table headers for constructor standings
-constructor_standings_table_headers = {
-    "team_id": "INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY",
-    "position": "INT UNSIGNED",
-    "team_name": "VARCHAR(255)",
     "points": "INT UNSIGNED"
 }
 
-# Table headers for constructor stats
-constructor_stats_table_headers = {
-    "event_id": "INT UNSIGNED",
-    "event_country": "VARCHAR(255)",
-    "team_id": "INT UNSIGNED",
-    "team_name": "VARCHAR(255)",
-    "car": "VARCHAR(255)",
-    "position": "INT UNSIGNED",
-    "points": "INT UNSIGNED",
-    "PRIMARY": "KEY(event_id, team_id)"
+f1_tables = {
+    "2018_stats": table_headers_2018_stats,
+    "2018_driver_standings": table_headers_2018_driver_standings,
+    "2018_constructor_standings": table_headers_2018_constructor_standings
 }
-
-f1_2018_tables = {
-    "grand_prixes": grand_prixes_table_headers,
-    "driver_standings": driver_standings_table_headers,
-    "driver_stats": driver_stats_table_headers,
-    "constructor_standings": constructor_standings_table_headers,
-    "constructor_stats": constructor_stats_table_headers
-}
-
-initialize_tables(f1_2018_tables, True)
