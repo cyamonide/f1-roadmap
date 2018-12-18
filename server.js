@@ -2,7 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path');
 
-http.createServer(function (req, res) {
+var server = http.createServer(function (req, res) {
 
 	var filePath = req.url;
 	if (filePath == '/')
@@ -27,4 +27,6 @@ http.createServer(function (req, res) {
 		res.write(data);
 		return res.end();
 	});
-}).listen(8080);
+});
+
+server.listen(8080);

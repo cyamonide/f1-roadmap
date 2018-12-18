@@ -1,3 +1,5 @@
+var f1 = require('./mysql-link');
+
 function changeSliderWidth(parent, val) {
 	var paddingLeft = document.getElementById(parent).getElementsByClassName("block-left");
 	var paddingRight = document.getElementById(parent).getElementsByClassName("block-right");
