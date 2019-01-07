@@ -89,7 +89,8 @@ class Roadmap extends React.Component {
 
     render() {
         return (
-            this.createRaceBlocks()
+            // this.createRaceBlocks()
+            <h1>You've successfully installed <a>virus.exe</a>!</h1>
         )
     }
 }
