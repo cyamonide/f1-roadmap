@@ -22,12 +22,37 @@ body {
     min-height: 100%;
 }
 
+.side-nav {
+    position: fixed;
+    height: 100vh;
+}
+
+.side-nav a {
+    text-decoration: none;
+}
+
+.side-nav ul {
+    width: 40px;
+    padding: 5px;
+    background-color: #000000;
+    list-style-type: none;
+}
+
+.side-nav li {
+    height: calc((100vh / 21) - (10px / 21));
+}
+
+.side-nav p {
+    text-align: center;
+    font-size: 80%;
+    color: white;
+}
+
 .race-block {
     min-height: 400px;
     width: 100%;
-    padding: 5px;
+    padding-left: 40px;
 
-    background-repeat: none;
     background-attachment: fixed;
     background-size: cover;
 }

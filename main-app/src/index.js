@@ -1,54 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-const gps = [
-    "Australia",
-    "Bahrain",
-    "China",
-    "Azerbaijan",
-    "Spain",
-    "Monaco",
-    "Canada",
-    "France",
-    "Austria",
-    "Great Britain",
-    "Germany",
-    "Hungary",
-    "Belgium",
-    "Italy",
-    "Singapore",
-    "Russia",
-    "Japan",
-    "USA",
-    "Mexico",
-    "Brazil",
-    "Abu Dhabi",
-];
-
-const ese = {
-    "Australia": "Australian",
-    "Bahrain": "Bahraini", 
-    "China": "Chinese",
-    "Azerbaijan": "Azerbaijani",
-    "Spain": "Spanish",
-    "Monaco": "Monacan",
-    "Canada": "Canadian",
-    "France": "French",
-    "Austria": "Austrian",
-    "Great Britain": "British",
-    "Germany": "German",
-    "Hungary": "Hungarian",
-    "Belgium": "Belgian",
-    "Italy": "Italian",
-    "Singapore": "Singapore",
-    "Russia": "Russian",
-    "Japan": "Japanese",
-    "USA": "American",
-    "Mexico": "Mexican",
-    "Brazil": "Brazilian",
-    "Abu Dhabi": "Abu Dhabi"
-}
+import * as constants from './constants.js'
 
 function resolveFilename(name) {
     return name.replace(" ", "_");
@@ -57,13 +10,13 @@ function resolveFilename(name) {
 class RaceBlock extends React.Component {
     render() {
         const style = {
-            backgroundImage: 'url(' + process.env.PUBLIC_URL + this.props.backgroundImageUrl + ')',
+            backgroundImage: 'url(' + process.env.PUBLIC_URL + '/assets/background/gps/' + resolveFilename(this.props.gp.name) + '.jpg)',
         }
 
         return (
-            <div class="race-block" style={style}>
+            <div className="race-block" id={this.props.gp.code} style={style}>
                 <div>
-                    <h1>{ese[this.props.country]} Grand Prix</h1>
+                    <h1>{this.props.gp.ese} Grand Prix</h1>
                 </div>
             </div>
         )
@@ -75,11 +28,12 @@ class Roadmap extends React.Component {
         
         let list = [];
 
-        for (let i = 0; i < gps.length; i++) {
+        for (let i = 0; i < constants.gps.length; i++) {
+            let gp = constants.gps[i];
             list.push(
                 <RaceBlock
-                    country={gps[i]}
-                    backgroundImageUrl={"/assets/background/gps/" + resolveFilename(gps[i]) + ".jpg"}
+                    key={gp.code}
+                    gp={gp}
                 />
             );
         }
@@ -94,4 +48,49 @@ class Roadmap extends React.Component {
     }
 }
 
-ReactDOM.render(<Roadmap />, document.getElementById('root'));
+class SideNavButton extends React.Component {
+    render() {
+        return (
+            <a href={'#' + this.props.gp.code}>
+                <div>
+                    <p>{this.props.gp.code}</p>
+                </div>
+            </a>
+        );
+    }
+}
+
+class SideNav extends React.Component {
+    createButtons() {
+        return constants.gps.map((gp) => {
+            return (
+                <li key={gp.code}>
+                    <SideNavButton gp={gp} />
+                </li>
+            )
+        });
+    }
+
+    render () {
+        return (
+            <div className="side-nav">
+                <ul>
+                    { this.createButtons() }
+                </ul>
+            </div>
+        );
+    }
+}
+
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <SideNav />
+                <Roadmap />
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
