@@ -31,9 +31,17 @@ body {
     text-decoration: none;
 }
 
+.side-nav div {
+    height: inherit;
+}
+
+.side-nav div:hover {
+    background-color: #E10600;
+}
+
 .side-nav ul {
-    width: 40px;
-    padding: 5px;
+    min-width: 3vw;
+    padding: 5px 0;
     background-color: #000000;
     list-style-type: none;
 }
@@ -43,15 +51,16 @@ body {
 }
 
 .side-nav p {
+    font-size: 1.3em;
     text-align: center;
-    font-size: 80%;
+    line-height: calc((100vh / 21) - (10px / 21));
     color: white;
 }
 
 .race-block {
     min-height: 400px;
     width: 100%;
-    padding-left: 40px;
+    padding-left: 3vw;
 
     background-attachment: fixed;
     background-size: cover;
