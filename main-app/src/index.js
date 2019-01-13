@@ -1,22 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import * as constants from './constants.js'
+import * as data from './data.js'
 
 function resolveFilename(name) {
     return name.replace(" ", "_");
 }
 
+function getAssetsUrl(path, withUrl=false) {
+    if (withUrl) {
+        return 'url(' + process.env.PUBLIC_URL + '/assets/' + path + ')';
+    }
+    return process.env.PUBLIC_URL + '/assets/' + path;
+}
+
+class TrackGeometry extends React.Component {
+    render() {
+        return (
+            <div className="track-geo-container">
+                <img src={getAssetsUrl('track_geometry/' + this.props.gp.code + '.png')} />
+                <p>
+                    {/* {this.props.gp.trackName} */}
+                    { data.get_track(this.props.gp.name) }
+                </p>
+            </div>
+        );
+    }
+}
+
 class RaceBlock extends React.Component {
     render() {
         const style = {
-            backgroundImage: 'url(' + process.env.PUBLIC_URL + '/assets/background/gps/' + resolveFilename(this.props.gp.name) + '.jpg)',
+            backgroundImage: getAssetsUrl('background/gps/' + resolveFilename(this.props.gp.name) + '.jpg', true),
         }
 
         return (
             <div className="race-block" id={this.props.gp.code} style={style}>
                 <div>
                     <h1>{this.props.gp.ese} Grand Prix</h1>
+                    <TrackGeometry gp={this.props.gp} />
                 </div>
             </div>
         )
@@ -28,8 +50,8 @@ class Roadmap extends React.Component {
         
         let list = [];
 
-        for (let i = 0; i < constants.gps.length; i++) {
-            let gp = constants.gps[i];
+        for (let i = 0; i < data.gps.length; i++) {
+            let gp = data.gps[i];
             list.push(
                 <RaceBlock
                     key={gp.code}
@@ -62,7 +84,7 @@ class SideNavButton extends React.Component {
 
 class SideNav extends React.Component {
     createButtons() {
-        return constants.gps.map((gp) => {
+        return data.gps.map((gp) => {
             return (
                 <li key={gp.code}>
                     <SideNavButton gp={gp} />

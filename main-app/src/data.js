@@ -1,3 +1,5 @@
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
 
 export const gps = [
     { name: "Australia", ese: "Australian", code: "AUS" },
@@ -22,3 +24,18 @@ export const gps = [
     { name: "Brazil", ese: "Brazilian", code: "BRA" },
     { name: "Abu Dhabi", ese: "Abu Dhabi", code: "UAE" }
 ];
+
+export function get_track(country) {
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("f1_2018");
+        var col = dbo.collection("races");
+    
+        var query = { country: country };
+        col.find(query).toArray(function(err, result) {
+            if (err) throw err;
+            db.close();
+            return(result[0].track);
+        });
+    });
+}
