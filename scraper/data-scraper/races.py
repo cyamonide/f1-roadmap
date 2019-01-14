@@ -44,8 +44,8 @@ for i, link in enumerate(links):
     race['date_fp2'] = dates[3]
     race['date_fp3'] = dates[4]
 
-    race['start_date'] = "dates[4]"
-    race['end_date'] = "dates[0]"
+    race['start_date'] = dates[4]
+    race['end_date'] = dates[0]
 
     print("[" + str(i+1) + "/21] Processed " + race['country'] + " grand prix.")
 

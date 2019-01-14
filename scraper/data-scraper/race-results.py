@@ -37,6 +37,7 @@ for ii, link in enumerate(links):
     for entry in rows:
         obj = {}
         obj['country'] = country
+        obj['country_code'] = countries.lookup("name", country, "code")
         obj['position'] = entry[0]
         obj['number'] = entry[1]
         obj['driver_first'] = entry[2]
