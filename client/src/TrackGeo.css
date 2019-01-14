@@ -1,0 +1,21 @@
+.track-geo-container {
+  /* float: right; */
+  width: 20vw;
+  background-color: #000000EE;
+  margin: 5px;
+}
+
+.track-geo-container img {
+  height: auto;
+  width: 7vw;
+  margin: 0 auto;
+  display: block;
+  padding: 5px;
+}
+
+.track-geo-container p {
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 5px;
+}

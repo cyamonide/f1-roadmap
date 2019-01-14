@@ -1,0 +1,26 @@
+.race-block {
+  min-height: 400px;
+  width: 100%;
+  padding-left: 3vw;
+
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.race-block div {
+  /* background-color: #00000088; */
+}
+
+.race-block h1 {
+  text-align: center;
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  color: #EEEEEE;
+  background-color: #00000088;
+  margin: 0;
+}
+
+.race-block .parent {
+  min-height: 400px;
+  width: 97vw;
+}
