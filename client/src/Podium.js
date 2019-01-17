@@ -67,26 +67,26 @@ class Podium extends React.Component {
         <h3>PODIUM</h3>
         { this.createPodium() }
         <p>
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target={ "#fullStandings" + this.state.country_code }>
+          <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target={ "#fullStandings" + this.state.country_code }>
             &lt; VIEW FULL STANDINGS
           </button>
         </p>
 
         {/* Start modal */}
-        <div class="modal fade" id={ "fullStandings" + this.state.country_code } role="dialog">
-          <div class="modal-dialog">
+        <div className="modal fade" id={ "fullStandings" + this.state.country_code } role="dialog">
+          <div className="modal-dialog">
           
             {/* Modal content */}
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">{ "FULL STANDINGS | " + (this.state.data[0] && (this.state.data[0].country).toUpperCase()) }</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h4 className="modal-title">{ "FULL STANDINGS | " + (this.state.data[0] && (this.state.data[0].country).toUpperCase()) }</h4>
+                <button type="button" className="close" data-dismiss="modal">&times;</button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 { this.createFullStandings() }
               </div>
-              {/* <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {/* <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
               </div> */}
             </div>
             
