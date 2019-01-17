@@ -31,7 +31,7 @@ class Leaders extends React.Component {
       let result = this.state.data[i];
       list.push(
         <div className={ "p" + (i+1) } key={i}>
-          { i+1 }. { result.driver_code } 
+          { i+1 } - { result.driver_code } 
           <span className="driver-points"> | { result.points }</span>
         </div>
       )
@@ -40,7 +40,7 @@ class Leaders extends React.Component {
     return list;
   }
 
-  createFullStandings() {
+  createfullLeaders() {
     let list = [];
     for (let i = 0; i < this.state.data.length; i++) {
       let result = this.state.data[i];
@@ -64,25 +64,27 @@ class Leaders extends React.Component {
   render() {
     return (
       <div className="podium">
+        <h3>POINTS LEADERS</h3>
         { this.createLeaders() }
         <p>
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target={ "#fullStandings" + this.state.country_code }>
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target={ "#fullLeaders" + this.state.country_code }>
             VIEW ALL POINTS &gt;
           </button>
         </p>
 
         {/* Start modal */}
-        <div class="modal fade" id={ "fullStandings" + this.state.country_code } role="dialog">
+        <div class="modal fade" id={ "fullLeaders" + this.state.country_code } role="dialog">
           <div class="modal-dialog">
           
             {/* Modal content */}
             <div class="modal-content">
               <div class="modal-header">
                 {/* <h4 class="modal-title">{ "FULL STANDINGS | " + (this.state.data[0] && (this.state.data[0].country).toUpperCase()) }</h4> */}
+                <h4>Harry eats ass</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
-                {/* { this.createFullStandings() } */}
+                {/* { this.createfullLeaders() } */}
               </div>
               {/* <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

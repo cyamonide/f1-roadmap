@@ -1,8 +1,12 @@
 .podium {
-  background-color: #000000EE;
+  background-color: #000000DD;
   color: #EEEEEE;
   margin-top: 5px;
   padding: 10px 25px;
+}
+
+.podium h3 {
+  border-bottom: solid;
 }
 
 .p1, .p2, .p3 {

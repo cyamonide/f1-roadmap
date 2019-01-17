@@ -27,11 +27,11 @@ class FrontRow extends React.Component {
 
   createFrontRow() {
     let list = [];
-    for (let i = 0; i < this.state.data.length && i < 4; i++) {
+    for (let i = 0; i < this.state.data.length && i < 2; i++) {
       let result = this.state.data[i];
       list.push(
         <div className={ "p" + (i+1) } key={i}>
-          { i+1 }. { result.driver_first + " " + result.driver_last } 
+          { i+1 } - { result.driver_first + " " + result.driver_last } 
           <span className={ 'car color-' + (result.car).toLowerCase().split(' ').join('-') }> | { result.car }</span>
         </div>
       )
@@ -42,7 +42,7 @@ class FrontRow extends React.Component {
 
   createLapTimes() {
     let list = [];
-    for (let i = 0; i < this.state.data.length && i < 4; i++) {
+    for (let i = 0; i < this.state.data.length && i < 2; i++) {
       let result = this.state.data[i];
       list.push(
         <div className={ "lap-time" } key={i}>
@@ -78,12 +78,13 @@ class FrontRow extends React.Component {
   render() {
     return (
       <div className="front-row">
+        <h3>FRONT ROW</h3>
 
         <div className="row">
-          <div className="col-md-10">
+          <div className="col-xl-10">
             { this.createFrontRow() }
           </div>
-          <div className="col-md-2">
+          <div className="col-xl-2 xl-hide">
             { this.createLapTimes() }
           </div>
         </div>

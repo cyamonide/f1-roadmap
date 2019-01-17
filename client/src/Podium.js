@@ -31,7 +31,7 @@ class Podium extends React.Component {
       let result = this.state.data[i];
       list.push(
         <div className={ "p" + (i+1) } key={i}>
-          { i+1 }. { result.driver_first + " " + result.driver_last } 
+          { i+1 } - { result.driver_first + " " + result.driver_last } 
           <span className={ 'car color-' + (result.car).toLowerCase().split(' ').join('-') }> | { result.car }</span>
         </div>
       )
@@ -45,7 +45,7 @@ class Podium extends React.Component {
     for (let i = 0; i < this.state.data.length; i++) {
       let result = this.state.data[i];
       list.push(
-        <div className="full-standings-entry row" key={i} style={ result.position === "10" || result.position === "15" ? { borderBottom: "solid 1px grey" } : {} }>
+        <div className="full-standings-entry row" key={i}>
           <div className="col-md-1" style={ {textAlign: "center"} }>{ result.position }</div>
           <div className="col-md-2" style={ {textAlign: "right"} }>
             { result.driver_code }
@@ -64,6 +64,7 @@ class Podium extends React.Component {
   render() {
     return (
       <div className="podium">
+        <h3>PODIUM</h3>
         { this.createPodium() }
         <p>
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target={ "#fullStandings" + this.state.country_code }>

@@ -1,8 +1,12 @@
 .front-row {
-  background-color: #000000EE;
+  background-color: #000000DD;
   color: #EEEEEE;
   margin-top: 5px;
   padding: 10px 25px;
+}
+
+.front-row h3 {
+  border-bottom: solid;
 }
 
 .front-row .row div div {
@@ -12,14 +16,6 @@
 
 .p2 {
   padding-left: 15px !important;
-}
-
-.p3 {
-  padding-left: 30px !important;
-}
-
-.p4 {
-  padding-left: 45px !important;
 }
 
 .front-row .car {

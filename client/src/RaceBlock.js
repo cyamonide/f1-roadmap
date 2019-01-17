@@ -16,11 +16,11 @@ function RaceBlock(props) {
       <h1>{props.gp.country_ese} Grand Prix</h1>
       
       <div className="row parent">
-        <div className="col-md-2">
+        <div className="col-xl-4">
           <Leaders country_code={props.gp.country_code} />
         </div>
-        <div className="col-md-7"></div>
-        <div className="col-md-3">
+        <div className="col-xl-5"></div>
+        <div className="col-xl-3">
           <TrackGeo gp={props.gp} />
         </div>
       </div>

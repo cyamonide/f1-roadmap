@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   loadRacesFromServer() {
-    fetch('/api/races')
+    fetch('http://localhost:3001/api/races')
       .then(data => data.json())
       .then((res) => {
         if (!res.success) this.setState({ error: res.error });

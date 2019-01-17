@@ -45,3 +45,19 @@
   margin: 1px;
   padding: 3px;
 }
+
+@media only screen and (max-width: 1300px) {
+  .xl-hide {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal-content * {
+    text-align: center !important;
+  }
+
+  .modal-content .row {
+    border-bottom: solid 1px #222222;
+  }
+}
