@@ -9,7 +9,11 @@ class F1_db:
         self.col = self.db[collection_name]
 
     def update_one(self, obj, key=""):
-
+        """
+        Arguments:
+            obj: object (dic6) to insert
+            key: default="", unique key if updating
+        """
         if key!="" and self.col.find({key: obj[key]}).count() > 0:
             self.col.update_one({key: obj[key]}, {"$set": obj})
             print("Updated entry.")
@@ -18,6 +22,11 @@ class F1_db:
             print("Inserted entry.")
 
     def update_many(self, objs, key=""):
+        """
+        Arguments:
+            objs: list of objects (dicts) to insert
+            key: default="", unique key if updating
+        """
         updated = 0
         inserted = 0
 

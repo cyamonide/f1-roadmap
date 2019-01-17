@@ -23,6 +23,9 @@ data = [
 ]
 
 def lookup(input_field, input_val, output_field):
+    """
+        input_field is any of "name", "ese", or "code"
+    """
     l = list(filter(lambda x : x[input_field] == input_val, data))
     if len(l) != 0:
         return l[0][output_field]

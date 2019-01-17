@@ -1,0 +1,56 @@
+.front-row {
+  background-color: #000000DD;
+  color: #EEEEEE;
+  margin-top: 5px;
+  padding: 10px 25px;
+}
+
+.front-row h3 {
+  border-bottom: solid;
+}
+
+.front-row .row div div {
+  font-size: 1.5em;
+  padding: 3px;
+}
+
+.p2 {
+  padding-left: 15px !important;
+}
+
+.front-row .car {
+  font-weight: bold;
+}
+
+.front-row .lap-time {
+  padding-left: 0;
+  font-size: 1.5em;
+}
+
+.front-row p {
+  padding-top: 10px;
+  font-size: 1.1em;
+  text-align: right;
+}
+
+.front-row .btn {
+  padding: 5px 20px;
+  background-color: #22222288;
+  color: #AAAAAA;
+  font-weight: bold;
+  border-radius: 0;
+  border-color: #AAAAAA;
+  font-size: 1em;
+}
+
+.front-row button:hover {
+  background-color: #00000000;
+  color: #EEEEEE;
+  text-decoration: none;
+  border-color: grey;
+}
+
+.full-starting-grid-entry div {
+  font-size: 1.1em;
+  line-height: 2em;
+}
