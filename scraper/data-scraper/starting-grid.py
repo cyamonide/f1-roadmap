@@ -1,5 +1,5 @@
 """
-Scrapes race (grand prixes) results
+Scrapes starting grid data
 """
 
 from bs4 import BeautifulSoup
@@ -13,16 +13,17 @@ root = "https://www.formula1.com"
 html = scraper.BeautifulSoupedHtml("https://www.formula1.com/en/results.html/2018/races.html")
 links = html.find_all(attrs={"data-name": "meetingKey"})[1:]
 links = list(map(lambda x : root + x['href'], links))
+links = list(map(lambda x : x.replace('race-result', 'starting-grid'), links))
 
 # Initialize mongodb database
-c_races = mongo.F1_db("race_results")
+c_races = mongo.F1_db("starting_grid")
 # Delete all existing entries
 c_races.flush()
 
 for ii, link in enumerate(links):
   html = scraper.BeautifulSoupedHtml(link)
   country = html.select("a.resultsarchive-filter-item-link.FilterTrigger.selected")[-1].text.strip()
-  table = html.select("div.resultsarchive-col-right")[0]
+  table = html.select("table.resultsarchive-table")[0]
   rows = table.select("tr")[1:]
 
   rows = list(map(lambda x : x.select("td")[1:], rows))
@@ -44,9 +45,7 @@ for ii, link in enumerate(links):
     obj['driver_last'] = entry[3]
     obj['driver_code'] = entry[4]
     obj['car'] = entry[5]
-    obj['laps'] = entry[6]
-    obj['time'] = entry[7]
-    obj['points'] = entry[8]
+    obj['time'] = entry[6]
 
     objs.append(obj)
 
