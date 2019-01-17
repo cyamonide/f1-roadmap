@@ -10,7 +10,7 @@ class RoadMap extends React.Component {
       let gp = this.props.data[i];
       list.push(
         <RaceBlock
-          key={gp.code}
+          key={gp.country_code}
           gp={gp}
         />
       );

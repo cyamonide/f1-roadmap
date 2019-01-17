@@ -1,13 +1,26 @@
 .track-geo-container {
-  /* float: right; */
-  width: 20vw;
   background-color: #000000EE;
-  margin: 5px;
+  padding: 5px;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.track-link {
+  text-decoration: none !important;
+}
+
+.track-link:hover .track-geo-container {
+  background-color: #888888EE;
+}
+
+.track-link:hover .track-geo-container * {
+  color: black;
+  font-weight: bold;
 }
 
 .track-geo-container img {
   height: auto;
-  width: 7vw;
+  width: 100px;
   margin: 0 auto;
   display: block;
   padding: 5px;

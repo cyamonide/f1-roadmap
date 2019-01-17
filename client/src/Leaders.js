@@ -1,8 +1,8 @@
 
 import React from 'react';
-import './FrontRow.css';
+import './Leaders.css';
 
-class FrontRow extends React.Component {
+class Leaders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class FrontRow extends React.Component {
   }
 
   loadDataFromServer() {
-    fetch('/api/startingGrid/' + this.state.country_code)
+    fetch('/api/points/leaders/' + this.state.country_code)
       .then(data => data.json())
       .then((res) => {
         if (!res.success) this.setState({ error: res.error });
@@ -25,14 +25,14 @@ class FrontRow extends React.Component {
       });
   }
 
-  createFrontRow() {
+  createLeaders() {
     let list = [];
-    for (let i = 0; i < this.state.data.length && i < 4; i++) {
+    for (let i = 0; i < this.state.data.length && i < 3; i++) {
       let result = this.state.data[i];
       list.push(
         <div className={ "p" + (i+1) } key={i}>
-          { i+1 }. { result.driver_first + " " + result.driver_last } 
-          <span className={ 'car color-' + (result.car).toLowerCase().split(' ').join('-') }> | { result.car }</span>
+          { i+1 }. { result.driver_code } 
+          <span className="driver-points"> | { result.points }</span>
         </div>
       )
     }
@@ -40,26 +40,12 @@ class FrontRow extends React.Component {
     return list;
   }
 
-  createLapTimes() {
-    let list = [];
-    for (let i = 0; i < this.state.data.length && i < 4; i++) {
-      let result = this.state.data[i];
-      list.push(
-        <div className={ "lap-time" } key={i}>
-          { result.time } 
-        </div>
-      )
-    }
-
-    return list;
-  }
-
-  createFullStartingGrid() {
+  createFullStandings() {
     let list = [];
     for (let i = 0; i < this.state.data.length; i++) {
       let result = this.state.data[i];
       list.push(
-        <div className="full-starting-grid-entry row" key={i} style={ result.position === "10" || result.position === "15" ? { borderBottom: "solid 1px grey" } : {} }>
+        <div className="full-standings-entry row" key={i} style={ result.position === "10" || result.position === "15" ? { borderBottom: "solid 1px grey" } : {} }>
           <div className="col-md-1" style={ {textAlign: "center"} }>{ result.position }</div>
           <div className="col-md-2" style={ {textAlign: "right"} }>
             { result.driver_code }
@@ -77,35 +63,26 @@ class FrontRow extends React.Component {
 
   render() {
     return (
-      <div className="front-row">
-
-        <div className="row">
-          <div className="col-md-10">
-            { this.createFrontRow() }
-          </div>
-          <div className="col-md-2">
-            { this.createLapTimes() }
-          </div>
-        </div>
-        
+      <div className="podium">
+        { this.createLeaders() }
         <p>
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target={ "#fullStartGrid" + this.state.country_code }>
-            VIEW FULL STARTING GRID &gt;
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target={ "#fullStandings" + this.state.country_code }>
+            VIEW ALL POINTS &gt;
           </button>
         </p>
 
         {/* Start modal */}
-        <div class="modal fade" id={ "fullStartGrid" + this.state.country_code } role="dialog">
+        <div class="modal fade" id={ "fullStandings" + this.state.country_code } role="dialog">
           <div class="modal-dialog">
           
             {/* Modal content */}
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">{ "FULL STARTING GRID | " + (this.state.data[0] && (this.state.data[0].country).toUpperCase()) }</h4>
+                {/* <h4 class="modal-title">{ "FULL STANDINGS | " + (this.state.data[0] && (this.state.data[0].country).toUpperCase()) }</h4> */}
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
-                { this.createFullStartingGrid() }
+                {/* { this.createFullStandings() } */}
               </div>
               {/* <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -115,10 +92,9 @@ class FrontRow extends React.Component {
           </div>
         </div>
         {/* End modal */}
-
       </div>
     );
   }
 }
 
-export default FrontRow;
+export default Leaders;

@@ -1,0 +1,50 @@
+.podium {
+  background-color: #000000EE;
+  color: #EEEEEE;
+  margin-top: 5px;
+  padding: 10px 25px;
+}
+
+.p1, .p2, .p3 {
+  font-size: 1.5em;
+  padding: 3px;
+}
+
+.podium .p2 {
+  padding-left: 15px;
+}
+
+.podium .p3 {
+  padding-left: 30px;
+}
+
+.podium .car {
+  font-weight: bold;
+}
+
+.podium p {
+  padding-top: 10px;
+  font-size: 1.1em;
+}
+
+.podium .btn {
+  padding: 5px 20px;
+  background-color: #22222288;
+  color: #AAAAAA;
+  font-weight: bold;
+  border-radius: 0;
+  border-color: #AAAAAA;
+  font-size: 1em;
+}
+
+.podium button:hover {
+  background-color: #00000000;
+  color: #EEEEEE;
+  text-decoration: none;
+  border-color: grey;
+}
+
+.full-standings-entry div {
+  font-size: 1.1em;
+  line-height: 2em;
+}

@@ -2,6 +2,7 @@
   min-height: 400px;
   width: 100%;
   padding-left: 3vw;
+  padding-bottom: 40px;
 
   background-attachment: fixed;
   background-size: cover;
@@ -21,6 +22,26 @@
 }
 
 .race-block .parent {
-  min-height: 400px;
+  min-height: 200px;
   width: 97vw;
+  padding-left: 40px;
+}
+
+.modal-dialog {
+  max-width: 70vw;
+}
+
+.modal-header {
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+
+.modal-content {
+  background-color: #111111;
+}
+
+.modal-content button {
+  background-color: alpha;
+  margin: 1px;
+  padding: 3px;
 }

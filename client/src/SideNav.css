@@ -1,6 +1,7 @@
 .side-nav {
   position: fixed;
   height: 100vh;
+  z-index: 100;
 }
 
 .side-nav a {
@@ -31,4 +32,5 @@
   text-align: center;
   line-height: calc((100vh / 21) - (10px / 21));
   color: white;
+  padding: 3px;
 }
