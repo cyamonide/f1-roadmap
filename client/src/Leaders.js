@@ -80,7 +80,7 @@ class Leaders extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 {/* <h4 className="modal-title">{ "FULL STANDINGS | " + (this.state.data[0] && (this.state.data[0].country).toUpperCase()) }</h4> */}
-                <h4>Harry eats ass</h4>
+                <h4>FULL POINTS STANDINGS</h4>
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
               </div>
               <div className="modal-body">
